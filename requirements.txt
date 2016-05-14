@@ -4,3 +4,4 @@ ipdb
 pycurl
 requests
 unittest2
+mongoengine

@@ -59,7 +59,7 @@ def request_song_info(song_id):
     return song
 
 
-def search_song_info_by_name(key):
+def search_song_info_by_name(keyword):
     """
     {
         "user_get_response": {
@@ -103,5 +103,5 @@ def search_song_info_by_name(key):
     """
     req = AlibabaXiamiApiSearchSongsGetRequest()
     req.set_app_info(XIAMI_AUTH)
-    req.key = key
-    response = req.getResponse()
+    req.key = keyword
+    return req.getResponse()['user_get_response']['data']['songs']['data']

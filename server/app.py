@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from __future__ import unicode_literals
+from __future__ import unicode_literals, absolute_import
 
 import sys
 
@@ -17,9 +17,17 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 def make_app():
+    from handlers.client_api import SongPlayHandler, SongSearchHandler
+    settings = {
+        'debug': True,
+        'autoreload': True,
+    }
+
     return tornado.web.Application([
         (r"/", MainHandler),
-    ])
+        (r"/api/music/play", SongPlayHandler),
+        (r"/api/music/search", SongSearchHandler),
+    ], **settings)
 
 
 if __name__ == "__main__":
