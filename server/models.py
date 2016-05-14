@@ -47,7 +47,7 @@ class Song(APIJSONModelMixture):
     def from_xiami_song_info(song_info):
         song = Song(
             title=song_info['song_name'],
-            singers=[song_info['singer']],
+            singers=[(song_info.get('singer') or song_info.get('singers')).split(';')],
             image=song_info['album_logo'],
             play_link=song_info['listen_file'],
             album_name=song_info['album_name'],
