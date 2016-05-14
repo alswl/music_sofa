@@ -5,15 +5,18 @@ import json
 from tornado.web import RequestHandler
 
 from app import template_loader
+import settings
 
 
 class RemoteHandler(RequestHandler):
 
     def get(self):
-        self.write(template_loader.load("remote.html").generate(myvalue="XXX"))
+        self.write(template_loader.load("remote.html").generate(
+            listen_addr=settings.LISTEN_ADDR, listen_port=settings.LISTEN_PORT))
 
 
 class ClientHandler(RequestHandler):
 
     def get(self):
-        self.write("Hello, world")
+        self.write(template_loader.load("client.html").generate(
+            listen_addr=settings.LISTEN_ADDR, listen_port=settings.LISTEN_PORT))

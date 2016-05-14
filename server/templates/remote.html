@@ -69,8 +69,10 @@
 
 <script type="application/javascript">
     $(function () {
+        var listen_addr = "{{listen_addr}}";
+        var listen_port = {{listen_port}};
         function connect() {
-            var ws = new WebSocket("ws://127.0.0.1:8888/ws/remote");
+            var ws = new WebSocket("ws://" + listen_addr + ":" + listen_port + "/ws/remote");
             ws.onopen = function() {
             };
             ws.onmessage = function (evt) {

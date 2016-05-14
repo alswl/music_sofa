@@ -8,9 +8,10 @@ import tornado.ioloop
 import tornado.web
 import tornado.template
 
+import settings
+
 
 sys.path.insert(0, 'libs')
-
 
 template_loader = tornado.template.Loader("templates")
 
@@ -43,5 +44,5 @@ def make_app():
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(port=8888, address='127.0.0.1')
+    app.listen(port=settings.LISTEN_PORT, address=settings.LISTEN_ADDR)
     tornado.ioloop.IOLoop.current().start()
