@@ -33,15 +33,16 @@ class APIJSONModelMixture(object):
 
 
 class Song(APIJSONModelMixture):
-    _api_fields = ['title', 'singers', 'album_name', 'play_link', 'image', 'xiami_song_id']
+    _api_fields = ['title', 'singers', 'album_name', 'play_link', 'image', 'xiami_song_id', 'lyric_text']
 
-    def __init__(self, title, singers, album_name, play_link, image, xiami_song_id):
+    def __init__(self, title, singers, album_name, play_link, image, xiami_song_id, lyric_text):
         self.title = title
         self.singers = singers
         self.album_name = album_name
         self.play_link = play_link
         self.image = image
         self.xiami_song_id = xiami_song_id
+        self.lyric_text = lyric_text
 
     @staticmethod
     def from_xiami_song_info(song_info):
@@ -52,5 +53,6 @@ class Song(APIJSONModelMixture):
             play_link=song_info['listen_file'],
             album_name=song_info['album_name'],
             xiami_song_id=song_info['song_id'],
+            lyric_text=song_info.get('lyric_text', ''),
         )
         return song

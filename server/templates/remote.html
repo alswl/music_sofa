@@ -59,6 +59,10 @@
             <h4>朴树(pushu)</h4>
             <p></p>
         </div>
+        <div class="col-lg-6">
+            <h3>歌词</h3>
+            <p id="lyric_text"></p>
+        </div>
 
         <div class="col-lg-6">
         </div>
@@ -93,6 +97,8 @@
                     $('#image').prop('src', command.params.song.image);
                     $('#song-title').text(command.params.song.title + ' - '
                                           + command.params.song.singers.join(' '));
+                    $('#lyric_text').html(command.params.song.lyric_text.replace(new RegExp('\r\n', 'g'), '<br/>')
+                                                  );
                 }
             };
             ws.onclose = function(e) {
