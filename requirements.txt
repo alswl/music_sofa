@@ -1,3 +1,6 @@
 tornado==4.3
 ipython
 ipdb
+pycurl
+requests
+unittest2
