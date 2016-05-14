@@ -25,14 +25,15 @@
     </div>
 
     <div class="jumbotron">
-        <h1>安河桥 - 宋东野</h1>
+        <h1 id="song-title"></h1>
         <p class="lead">
-            <audio controls id="player">
-                <source id="player-source" type="audio/mp3"></source>
-                <p>Your browser does not support native audio</p>
-            </audio>
+        <div>
+        <audio controls id="player">
+            <source id="player-source" type="audio/mp3"></source>
+        </audio>
+        </div>
         <!--<button type="button" class="btn btn-lg btn-success" aria-label="Left Align">-->
-            <!--<span class="glyphicon glyphicon glyphicon-play" aria-hidden="true"></span>-->
+        <!--<span class="glyphicon glyphicon glyphicon-play" aria-hidden="true"></span>-->
         <!--</button>-->
         <button id="btn-forward" type="button" class="btn btn-lg btn-info" aria-label="Left Align">
             <span class="glyphicon glyphicon glyphicon-forward " aria-hidden="true"></span>
@@ -79,6 +80,8 @@
                     $('#player-source').prop('src',  command.params.song.play_link);
                     $('#player')[0].load();
                     $('#player')[0].play();
+                    $('#song-title').text(command.params.song.title + ' - '
+                                          + command.params.song.singers.join(' '));
                 }
             };
             ws.onclose = function(e) {
