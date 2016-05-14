@@ -11,7 +11,8 @@ class RemoteWSHandler(WebSocketHandler):
     def open(self):
         play.remote_join(self)
         song = play.get_last_song()
-        play.send_play_command(song, self)
+        if song:
+            play.send_play_command(song, self)
         print("WebSocket opened")
 
     def on_message(self, message):

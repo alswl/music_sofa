@@ -29,8 +29,8 @@
         <h1 id="song-title">...</h1>
         <p class="lead">
         <div>
-        <audio controls id="player">
-            <source id="player-source" type="audio/mp3"></source>
+        <audio controls id="player" autoplay="autoplay" loop="loop">
+            <source id="player-source" type="audio/mp3" />
         </audio>
         </div>
         <!--<button type="button" class="btn btn-lg btn-success" aria-label="Left Align">-->
@@ -71,6 +71,7 @@
 
 <script type="application/javascript">
     $(function () {
+        
         var listen_addr = "{{listen_addr}}";
         var listen_port = {{listen_port}};
         function connect() {
