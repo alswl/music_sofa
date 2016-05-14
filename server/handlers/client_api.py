@@ -20,14 +20,15 @@ class SongPlayHandler(RequestHandler):
             self.set_status(404)
             return
         song = Song.from_xiami_song_info(song_info)
-        play.play_song(song)
+        count = play.play_song(song)
+        self.write(json.dumps({'count': count}))
 
 
 class SongSearchHandler(RequestHandler):
 
-    def post(self):
+    def get(self):
         """
-        http -f POST http://127.0.0.1:8888/api/music/search keyword=J
+        http -f POST http://127.0.0.1:8888/api/song/search keyword=J
         """
         keyword = self.get_argument('keyword')
         song_infos = xiami_api.search_song_info_by_name(keyword)

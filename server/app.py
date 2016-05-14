@@ -3,6 +3,7 @@
 from __future__ import unicode_literals, absolute_import
 
 import sys
+import os
 
 import tornado.ioloop
 import tornado.web
@@ -10,8 +11,10 @@ import tornado.template
 
 import settings
 
-
 sys.path.insert(0, 'libs')
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 template_loader = tornado.template.Loader("templates")
 
@@ -36,8 +39,8 @@ def make_app():
         (r"/remote", RemoteHandler),
         (r"/client", ClientHandler),
         (r"/ws/remote", RemoteWSHandler),
-        (r"/api/music/play", SongPlayHandler),
-        (r"/api/music/search", SongSearchHandler),
+        (r"/api/song/play", SongPlayHandler),
+        (r"/api/song/search", SongSearchHandler),
         (r"/static/(.*)", tornado.web.StaticFileHandler, {"path": "static"}),
     ], **settings)
 

@@ -33,7 +33,7 @@ class APIJSONModelMixture(object):
 
 
 class Song(APIJSONModelMixture):
-    _api_fields = ['title', 'singers', 'album_name', 'play_link', 'image']
+    _api_fields = ['title', 'singers', 'album_name', 'play_link', 'image', 'xiami_song_id']
 
     def __init__(self, title, singers, album_name, play_link, image, xiami_song_id):
         self.title = title

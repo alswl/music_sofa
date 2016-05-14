@@ -16,16 +16,17 @@
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="#">Remote Player</a></li>
-                <li role="presentation"><a href="#">Client</a></li>
+                <li role="presentation" class="active"><a href="/remote">Remote Player</a></li>
+                <li role="presentation"><a href="/client">Client</a></li>
                 <li role="presentation"><a href="#">Configuration</a></li>
+                <li role="presentation"><a href="#">{{online_count}} 台设备在线</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">Music Sofa | 音乐沙发</h3>
     </div>
 
     <div class="jumbotron">
-        <h1 id="song-title"></h1>
+        <h1 id="song-title">...</h1>
         <p class="lead">
         <div>
         <audio controls id="player">
@@ -35,9 +36,10 @@
         <!--<button type="button" class="btn btn-lg btn-success" aria-label="Left Align">-->
         <!--<span class="glyphicon glyphicon glyphicon-play" aria-hidden="true"></span>-->
         <!--</button>-->
-        <button id="btn-forward" type="button" class="btn btn-lg btn-info" aria-label="Left Align">
-            <span class="glyphicon glyphicon glyphicon-forward " aria-hidden="true"></span>
-        </button>
+        <!--<button id="btn-forward" type="button" class="btn btn-lg btn-info" aria-label="Left Align">-->
+            <!--<span class="glyphicon glyphicon glyphicon-forward " aria-hidden="true"></span>-->
+        <!--</button>-->
+        <img id="image" src="http://img.xiami.net/images/album/img20/509729620/10097296331409729633_2.jpg">
         </p>
     </div>
 
@@ -82,6 +84,7 @@
                     $('#player-source').prop('src',  command.params.song.play_link);
                     $('#player')[0].load();
                     $('#player')[0].play();
+                    $('#image').prop('src', command.params.song.image);
                     $('#song-title').text(command.params.song.title + ' - '
                                           + command.params.song.singers.join(' '));
                 }
