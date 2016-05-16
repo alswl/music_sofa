@@ -2,8 +2,6 @@
 
 import logging
 
-import mongoengine
-
 from utils import json_util
 
 logger = logging.getLogger(__name__)
